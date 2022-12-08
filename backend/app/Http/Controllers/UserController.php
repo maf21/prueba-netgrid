@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     function register(Request $req){
-        console.log($req);
         $user = new User;
         $user->name = $req->input('name');
         $user->email = $req->input('email');
@@ -17,8 +16,15 @@ class UserController extends Controller
         $user->address = $req->input('address');
         $user->birthdate = $req->input('birthdate');
         $user->city = $req->input('city');
-        
         $user->save();
+        return $user;
+    }
+
+    function login(Request $req){
+        $user = User::where('email', $req->email)->first();
+        if(!$user || !Hash::check($req->password, $user->password)){
+            return["error" => "Correo o contraseña incorrectos"];
+        }
         return $user;
     }
 }
