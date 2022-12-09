@@ -1,10 +1,10 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
-import Home from './Home';
-import Login from './Login';
-import Register from './Register';
-import Personajes from './Personajes';
-import Protected from './Protected';
+import Home from './Components/Home';
+import Login from './Components/Login';
+import Register from './Components/Register';
+import Personajes from './Components/PersonajesList';
+import Protected from './Components/Protected';
 
 function App() {
   return (

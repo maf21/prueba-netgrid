@@ -14,7 +14,6 @@ function Login(){
     
     async function login(){
         let item = {email, password}
-        console.warn(item)
         let result = await fetch("http://localhost:8000/api/login",{
             method: 'POST',
             body: JSON.stringify(item),
@@ -24,8 +23,12 @@ function Login(){
             }
         })
         result = await result.json()
-        localStorage.setItem("user-info",JSON.stringify(result))
-        navigate("/")
+        if(!result.error){
+            localStorage.setItem("user-info",JSON.stringify(result))
+            navigate("/")
+        }else{
+            console.warn(result)
+        }
     }
     return(
         <div>

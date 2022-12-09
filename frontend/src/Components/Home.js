@@ -1,10 +1,12 @@
 import Header from './Header';
+import PersonajesList from './PersonajesList';
 
 function Home(){
     return(
         <div>
             <Header />
-            <h1>Bienvenido</h1>
+            <h1>Lista de personajes</h1>
+            <PersonajesList />
         </div>
     )
 }
